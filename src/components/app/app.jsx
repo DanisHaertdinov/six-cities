@@ -42,7 +42,7 @@ const App = () => {
             <Header/>
             <Favorites>
               <FavoritesItem>
-                <City></City>
+                <City/>
                 <OffersList/>
               </FavoritesItem>
             </Favorites>
