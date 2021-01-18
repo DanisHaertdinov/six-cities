@@ -1,56 +1,74 @@
-import React from 'react';
-import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import LoginPage from './login-page';
+import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-const setup = () => {
-  render(<LoginPage/>);
-
-  const inputLogin = screen.getByPlaceholderText(`Email`);
-  const inputPassword = screen.getByPlaceholderText(`Password`);
-  const submitButton = screen.getByRole(`button`);
-
-  return {inputLogin, inputPassword, submitButton};
-};
+import React from 'react';
+import LoginPage from './login-page';
 
 describe(`login-page`, () => {
-  it(`Should render correct user,password input and submit button`, () => {
-    const {inputLogin, inputPassword, submitButton} = setup();
+  it(`Should render correct user,password inputs and submit button`, () => {
+    render(<LoginPage/>);
 
-    expect(inputLogin.type).toEqual(`email`);
+    const loginInput = screen.getByPlaceholderText(`Email`);
+    const passwordInput = screen.getByPlaceholderText(`Password`);
+    const submitButton = screen.getByRole(`button`);
 
-    expect(inputPassword.type).toEqual(`password`);
+    expect(loginInput.type).toEqual(`email`);
+
+    expect(passwordInput.type).toEqual(`password`);
 
     expect(submitButton.type).toEqual(`submit`);
-  });
-
-  it(`Submit button: should be disabled by default`, () => {
-    const {submitButton} = setup();
-    expect(submitButton).toBeDisabled();
-  });
-
-  it(`Submit button: should be active if email is valid and password input not empty`, () => {
-    const {inputLogin, inputPassword, submitButton} = setup();
-
-    userEvent.type(inputLogin, `testEmail@gmail.com`);
-    userEvent.type(inputPassword, `1234`);
-    expect(submitButton).not.toBeDisabled();
-  });
-
-  it(`Submit button: should be disabled if email is not valid or password input is empty`, () => {
-    const {inputLogin, inputPassword, submitButton} = setup();
-
-    userEvent.type(inputLogin, `testEmail@gmail.com`);
-    userEvent.type(inputPassword, ``);
-    expect(submitButton).toBeDisabled();
-
-    userEvent.type(inputLogin, `@gmail.com`);
-    userEvent.type(inputPassword, `1234`);
-    expect(submitButton).toBeDisabled();
   });
 
   it(`Should send request to server on submit button clicked`);
 
   it(`Should show alert when server response whith error after submit`);
+});
+
+describe(`submit button`, () => {
+  it(`Should be disabled by default`, () => {
+    render(<LoginPage/>);
+
+    const submitButton = screen.getByRole(`button`);
+
+    expect(submitButton).toBeDisabled();
+  });
+
+  it(`Should be active if email is valid and password input not empty`, () => {
+    render(<LoginPage/>);
+
+    const loginInput = screen.getByPlaceholderText(`Email`);
+    const passwordInput = screen.getByPlaceholderText(`Password`);
+    const submitButton = screen.getByRole(`button`);
+
+    userEvent.type(loginInput, `testEmail@gmail.com`);
+    userEvent.type(passwordInput, `1234`);
+
+    expect(submitButton).not.toBeDisabled();
+  });
+
+  it(`Should be disabled if email is not valid or password input is empty`, () => {
+    render(<LoginPage/>);
+
+    const loginInput = screen.getByPlaceholderText(`Email`);
+    const passwordInput = screen.getByPlaceholderText(`Password`);
+    const submitButton = screen.getByRole(`button`);
+
+    userEvent.type(loginInput, `@gmail.com`);
+    userEvent.type(passwordInput, `1234`);
+
+    expect(submitButton).toBeDisabled();
+  });
+
+  it(`Should be disabled if password input is empty`, () => {
+    render(<LoginPage/>);
+
+    const loginInput = screen.getByPlaceholderText(`Email`);
+    const passwordInput = screen.getByPlaceholderText(`Password`);
+    const submitButton = screen.getByRole(`button`);
+
+    userEvent.type(loginInput, `testEmail@gmail.com`);
+    userEvent.type(passwordInput, ``);
+
+    expect(submitButton).toBeDisabled();
+  });
 });

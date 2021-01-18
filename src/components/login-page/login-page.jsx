@@ -7,8 +7,9 @@ const LoginPage = () => {
 
   const handleEmailInputChange = (evt) => {
     const email = evt.target.value;
+    const isValid = checkEmailValidity(email);
 
-    setEmailValidity(checkEmailValidity(email));
+    setEmailValidity(isValid);
   };
 
   const handlePasswordInputChange = (evt) => {
