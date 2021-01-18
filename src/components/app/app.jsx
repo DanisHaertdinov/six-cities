@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import LoginPage from '../login-page/login-page'
+import LoginPage from '../login-page/login-page';
 /* eslint-disable  */
 const MainPage = (props) => <div className="main-page">{props.children}</div>;
 const Header = (props) => <div className="header">{props.children}</div>;
