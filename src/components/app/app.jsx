@@ -1,12 +1,12 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import LoginPage from '../login-page/login-page';
 /* eslint-disable  */
 const MainPage = (props) => <div className="main-page">{props.children}</div>;
 const Header = (props) => <div className="header">{props.children}</div>;
 const CitiesMenu = (props) => <div className="cities">{props.children}</div>;
 const OffersList = (props) => <div className="offers">{props.children}</div>;
 const Map = (props) => <div className="map">{props.children}</div>;
-const LoginPage = (props) => <div className="login-page">{props.children}</div>;
 const LoginForm = (props) => <div className="login-page__form">{props.children}</div>;
 const Location = (props) => <div className="login-page__location">{props.children}</div>;
 const FavoritesPage = (props) => <div className="favorites-page">{props.children}</div>;
