@@ -1,5 +1,5 @@
-import React from "react";
-import { capitalizeFirstLetter } from "../../util/util";
+import React from 'react';
+import {capitalizeFirstLetter} from '../../util/util';
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
