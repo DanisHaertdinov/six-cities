@@ -110,11 +110,36 @@ describe(`offer-page`, () => {
     const premiumMark = screen.queryByText(`Premium`);
 
     expect(premiumMark).toEqual(null);
-
   });
 
-  it(`Should render correct offer type`, () => {
+  it(`Should render capitalized offer type`, () => {
+    let type = `house`;
+    let typeTestOffer = {
+      ...offers[0],
+      type,
+    };
 
+    const {rerender} = render(<OfferPage
+      offer = {typeTestOffer}
+    />);
+
+    let renderedType = screen.queryByText(`House`);
+
+    expect(renderedType).not.toEqual(null);
+
+    type = `hotel`;
+    typeTestOffer = {
+      ...offers[0],
+      type,
+    };
+
+    rerender(<OfferPage
+      offer = {typeTestOffer}
+    />);
+
+    renderedType = screen.queryByText(`Hotel`);
+
+    expect(renderedType).not.toEqual(null);
   });
 
   it(`Should render offer rating`, () => {

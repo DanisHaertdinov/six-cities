@@ -1,10 +1,13 @@
 import React from "react";
+import { capitalizeFirstLetter } from "../../util/util";
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description, isPremium} = offer;
+  const {title, description, isPremium, type} = offer;
+
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
+  const capitalizedType = capitalizeFirstLetter(type);
   return (
     <div className="page">
       <header className="header">
@@ -69,7 +72,7 @@ const OfferScreen = (props) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {capitalizedType}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   3 Bedrooms
