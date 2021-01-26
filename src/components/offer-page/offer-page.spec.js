@@ -6,7 +6,10 @@ import OfferPage from './offer-page';
 describe(`offer-page`, () => {
   it(`Should render offer photos`, () => {
     const photos = [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`];
-    const picturesTestOffer = Object.assign(offers[0], {photos});
+    const picturesTestOffer = {
+      ...offers[0],
+      photos
+    };
 
     render(<OfferPage
       offer = {picturesTestOffer}
@@ -30,7 +33,10 @@ describe(`offer-page`, () => {
       `img/apartment-02.jpg`,
       `img/apartment-03.jpg`
     ];
-    const picturesTestOffer = Object.assign(offers[0], {photos});
+    const picturesTestOffer = {
+      ...offers[0],
+      photos
+    };
 
     render(<OfferPage
       offer = {picturesTestOffer}
@@ -42,6 +48,19 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render offer title as first level heading`, () => {
+    const title = `Test Offer Title`;
+    const titleTestOffer = {
+      ...offers[0],
+      title,
+    };
+
+    render(<OfferPage
+      offer = {titleTestOffer}
+    />);
+    
+    const renderedTitle = screen.getByText(`Test Offer Title`);
+
+    expect(renderedTitle.tagName).toEqual(`H1`);
   });
 
   it(`Should render offer description`, () => {

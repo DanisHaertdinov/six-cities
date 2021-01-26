@@ -1,8 +1,10 @@
 import React from "react";
+const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
-  const { offer } = props;
-  const { photos } = offer;
+  const {offer} = props;
+  const {title} = offer;
+  const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   return (
     <div className="page">
       <header className="header">
@@ -49,7 +51,7 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width={31} height={33}>
@@ -60,7 +62,7 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{ width: `80%` }} />
+                  <span style={{width: `80%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">4.8</span>
@@ -149,7 +151,7 @@ const OfferScreen = (props) => {
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={{ width: `80%` }} />
+                          <span style={{width: `80%`}} />
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -232,7 +234,7 @@ const OfferScreen = (props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: `80%` }} />
+                      <span style={{width: `80%`}} />
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -263,7 +265,7 @@ const OfferScreen = (props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: `80%` }} />
+                      <span style={{width: `80%`}} />
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -294,7 +296,7 @@ const OfferScreen = (props) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style={{ width: `100%` }} />
+                      <span style={{width: `100%`}} />
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -310,6 +312,6 @@ const OfferScreen = (props) => {
       </main>
     </div>
   );
-}
+};
 
 export default OfferScreen;
