@@ -57,7 +57,7 @@ describe(`offer-page`, () => {
     render(<OfferPage
       offer = {titleTestOffer}
     />);
-    
+
     const renderedTitle = screen.getByText(`Test Offer Title`);
 
     expect(renderedTitle.tagName).toEqual(`H1`);
