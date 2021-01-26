@@ -64,7 +64,19 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render offer description`, () => {
+    const description = `Test Offer Description Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor Test`;
+    const descriptionTestOffer = {
+      ...offers[0],
+      description,
+    };
 
+    render(<OfferPage
+      offer = {descriptionTestOffer}
+    />);
+
+    const renderedDescription = screen.getByText(description);
+
+    expect(renderedDescription);
   });
 
   it(`Should render offer premium mark if offer is premium`, () => {
