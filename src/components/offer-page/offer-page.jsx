@@ -3,7 +3,7 @@ const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description} = offer;
+  const {title, description, isPremium} = offer;
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   return (
     <div className="page">
@@ -46,9 +46,9 @@ const OfferScreen = (props) => {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
+              {isPremium && <div className="property__mark">
                 <span>Premium</span>
-              </div>
+              </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   {title}

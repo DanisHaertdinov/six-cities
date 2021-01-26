@@ -80,10 +80,36 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render offer premium mark if offer is premium`, () => {
+    const isPremium = true;
+    const premiumTestOffer = {
+      ...offers[0],
+      isPremium,
+    };
+
+    render(<OfferPage
+      offer = {premiumTestOffer}
+    />);
+
+    const premiumMark = screen.queryByText(`Premium`);
+
+    expect(premiumMark).not.toEqual(null);
 
   });
 
   it(`Should not render offer premium mark if offer is not premium`, () => {
+    const isPremium = false;
+    const premiumTestOffer = {
+      ...offers[0],
+      isPremium,
+    };
+
+    render(<OfferPage
+      offer = {premiumTestOffer}
+    />);
+
+    const premiumMark = screen.queryByText(`Premium`);
+
+    expect(premiumMark).toEqual(null);
 
   });
 
