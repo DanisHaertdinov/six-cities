@@ -174,19 +174,51 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render bedrooms number`, () => {
+    const numberOfBedrooms = 34;
+    const numberOfBedroomsTestOffer = {
+      ...offers[0],
+      numberOfBedrooms,
+    };
 
+    render(<OfferPage
+      offer = {numberOfBedroomsTestOffer}
+    />);
+
+    const renderedNumberOfBedrooms = screen.queryByText(`${numberOfBedrooms} Bedrooms`);
+
+    expect(renderedNumberOfBedrooms).not.toEqual(null);
   });
 
   it(`Should render max guest number`, () => {
+    const capacity = 14;
+    const capacityTestOffer = {
+      ...offers[0],
+      capacity,
+    };
 
+    render(<OfferPage
+      offer = {capacityTestOffer}
+    />);
+
+    const renderedCapacity = screen.queryByText(`Max ${capacity} adults`);
+
+    expect(renderedCapacity).not.toEqual(null);
   });
 
-  it(`Should render rent cost`, () => {
+  it(`Should render rent cost in euro`, () => {
+    const price = 14;
+    const priceTestOffer = {
+      ...offers[0],
+      price,
+    };
 
-  });
+    render(<OfferPage
+      offer = {priceTestOffer}
+    />);
 
-  it(`Should always render rent cost in euro`, () => {
+    const renderedPrice = screen.queryByText(`€${price}`);
 
+    expect(renderedPrice).not.toEqual(null);
   });
 
   it(`Should render feature-list`, () => {

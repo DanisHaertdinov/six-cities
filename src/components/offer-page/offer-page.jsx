@@ -6,7 +6,7 @@ const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description, isPremium, type, rating} = offer;
+  const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price} = offer;
 
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   const capitalizedType = capitalizeFirstLetter(type);
@@ -79,14 +79,14 @@ const OfferScreen = (props) => {
                   {capitalizedType}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {numberOfBedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {capacity} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">€120</b>
+                <b className="property__price-value">€{price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
