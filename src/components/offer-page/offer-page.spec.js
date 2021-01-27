@@ -93,7 +93,6 @@ describe(`offer-page`, () => {
     const premiumMark = screen.queryByText(`Premium`);
 
     expect(premiumMark).not.toEqual(null);
-
   });
 
   it(`Should not render offer premium mark if offer is not premium`, () => {
@@ -143,11 +142,35 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render offer rating`, () => {
+    const rating = 1.7;
+    const ratingTestOffer = {
+      ...offers[0],
+      rating,
+    };
 
+    render(<OfferPage
+      offer = {ratingTestOffer}
+    />);
+
+    const renderedRating = screen.queryByText(rating);
+
+    expect(renderedRating).not.toEqual(null);
   });
 
   it(`Should render correct stars rating relative to rating`, () => {
+    const rating = 2.3;
+    const ratingTestOffer = {
+      ...offers[0],
+      rating,
+    };
 
+    render(<OfferPage
+      offer = {ratingTestOffer}
+    />);
+
+    const starsRating = screen.queryByTestId(`property-stars`);
+
+    expect(starsRating).toHaveStyle(`width: 46%`);
   });
 
   it(`Should render bedrooms number`, () => {

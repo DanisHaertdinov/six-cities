@@ -1,13 +1,17 @@
 import React from 'react';
-import {capitalizeFirstLetter} from '../../util/util';
+import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
+import {OFFER_MAX_RATING} from '../../const/const';
+
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description, isPremium, type} = offer;
+  const {title, description, isPremium, type, rating} = offer;
 
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   const capitalizedType = capitalizeFirstLetter(type);
+  const ratingInPercent = convertNumberToPercent(rating, OFFER_MAX_RATING);
+
   return (
     <div className="page">
       <header className="header">
@@ -65,10 +69,10 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `80%`}} />
+                  <span data-testid="property-stars" style={{width: `${ratingInPercent}%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
