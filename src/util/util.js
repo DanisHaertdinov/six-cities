@@ -8,7 +8,7 @@ const capitalizeFirstLetter = (string) => {
 };
 
 const convertNumberToPercent = (portion, total) => {
-  return +portion / +total * 100;
+  return portion / total * 100;
 };
 
 export {checkEmailValidity, capitalizeFirstLetter, convertNumberToPercent};
