@@ -321,6 +321,60 @@ describe(`offer-page`, () => {
       expect(renderedHostAvatarWrapper.classList.contains(`property__avatar-wrapper--pro`)).toBe(false);
     });
   });
+
+  describe(`favorite-mark`, () => {
+    it(`Should be rendered as a button if user user is authorized `);
+
+    it(`Should be rendered as a link to login-page if user is not authorized`);
+
+    describe(`favorite-button`, () => {
+      it(`Should be filled by main color if offer is favorite`);
+
+      it(`Should not be filled by color if offer is not favorite`);
+
+      it(`Should set offer as favorite on click if offer is not favorite`);
+
+      it(`Should set offer as not favorite on click if offer is favorite`);
+    });
+  });
+
+  it(`Should render reviews count`);
+
+  it(`Should render offer reviews`);
+
+  it(`Should render review-form if user is authorized`);
+
+  it(`Should not render review-form if user is not authorized`);
+
+  describe(`review-form`, () => {
+    it(`Should render five radio inputs with values from 1 to 5`);
+
+    it(`Should render textarea with correct placeholder`);
+
+    it(`Should render submit button`);
+
+    describe(`submit button`, () => {
+      it(`Should be disabled by default`);
+
+      it(`Should be disabled if none of radio inputs is checked`);
+
+      it(`Should be disabled if textarea value length less than 50 characters `);
+
+      it(`Should be disabled if textarea value length more than 300 characters `);
+
+      it(`Should be active if textarea length is > 50 and < 300 and one of radio inputs is checked`);
+    });
+
+    it(`Should be disabled after submit and before response come`);
+
+    it(`Should be cleared after success response`);
+
+    it(`Should show alert after error response`);
+  });
+
+  it(`Should render map with near offers`);
+
+  it(`Should render near offers cards under the map`);
 });
 
 const offers = [
