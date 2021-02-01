@@ -6,7 +6,7 @@ const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price} = offer;
+  const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price, goods} = offer;
 
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   const capitalizedType = capitalizeFirstLetter(type);
@@ -91,37 +91,14 @@ const OfferScreen = (props) => {
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
-                <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                <ul className="property__inside-list" data-testid="features-list">
+                  {goods.map((good) => {
+                    return (
+                      <li key={good} className="property__inside-item">
+                        {good}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="property__host">

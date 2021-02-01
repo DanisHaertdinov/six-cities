@@ -222,7 +222,22 @@ describe(`offer-page`, () => {
   });
 
   it(`Should render feature-list`, () => {
+    const features = [`Wifi`, `Heating`, `Cable TV`, `Coffee machine`, `Kitchen`, `Towels`];
+    const featuresTestOffer = {
+      ...offers[0],
+      features,
+    };
 
+    render(<OfferPage
+      offer={featuresTestOffer}
+    />);
+
+    const renderedFeaturesList = screen.getByTestId(`features-list`);
+    const renderedFeatures = Array
+      .from(renderedFeaturesList.childNodes)
+      .map((feature) => feature.textContent);
+
+    expect(renderedFeatures).toEqual(features);
   });
 
   describe(`host info`, () => {
