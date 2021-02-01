@@ -242,19 +242,83 @@ describe(`offer-page`, () => {
 
   describe(`host info`, () => {
     it(`should render host avatar`, () => {
+      const avatar = `img/avatar-angelina.jpg`;
+      const host = {
+        ...offers[0].host,
+        avatar
+      };
+      const hostAvatarTestOffer = {
+        ...offers[0],
+        host,
+      };
 
+      render(<OfferPage
+        offer={hostAvatarTestOffer}
+      />);
+
+      const renderedHostAvatarUrl = screen.getByRole(`img`, {name: /host avatar/i}).getAttribute(`src`);
+
+      expect(renderedHostAvatarUrl).toEqual(avatar);
     });
 
     it(`Should render host name`, () => {
+      const name = `test offer host name`;
+      const host = {
+        ...offers[0].host,
+        name
+      };
+      const hostNameTestOffer = {
+        ...offers[0],
+        host,
+      };
 
+      render(<OfferPage
+        offer={hostNameTestOffer}
+      />);
+
+      const renderedName = screen.getByText(name);
+
+      expect(renderedName.textContent).toEqual(name);
     });
 
     it(`Should render super mark if host has a super property`, () => {
+      const isSuper = true;
+      const host = {
+        ...offers[0].host,
+        isSuper
+      };
+      const hostSuperMarkTestOffer = {
+        ...offers[0],
+        host,
+      };
 
+      render(<OfferPage
+        offer={hostSuperMarkTestOffer}
+      />);
+
+      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode;
+
+      expect(renderedHostAvatarWrapper.classList.contains(`property__avatar-wrapper--pro`)).toBe(true);
     });
 
     it(`Should not render super mark if host hasn't super property`, () => {
+      const isSuper = false;
+      const host = {
+        ...offers[0].host,
+        isSuper
+      };
+      const hostSuperMarkTestOffer = {
+        ...offers[0],
+        host,
+      };
 
+      render(<OfferPage
+        offer={hostSuperMarkTestOffer}
+      />);
+
+      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode;
+
+      expect(renderedHostAvatarWrapper.classList.contains(`property__avatar-wrapper--pro`)).toBe(false);
     });
   });
 });

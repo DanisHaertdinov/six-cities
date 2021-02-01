@@ -6,7 +6,8 @@ const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 const OfferScreen = (props) => {
   const {offer} = props;
-  const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price, goods} = offer;
+  const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price, goods, host} = offer;
+  const {avatar, name, isSuper} = host;
 
   const photos = offer.photos.slice(0, MAX_OFFER_PHOTOS_NUMBER);
   const capitalizedType = capitalizeFirstLetter(type);
@@ -104,11 +105,11 @@ const OfferScreen = (props) => {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width={74} height={74} alt="Host avatar" />
+                  <div className={`property__avatar-wrapper ${isSuper ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
+                    <img className="property__avatar user__avatar" src={avatar} width={74} height={74} alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    {name}
                   </span>
                 </div>
                 <div className="property__description">
