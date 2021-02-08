@@ -1,8 +1,10 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getAuthorizationStatus} from "../../store/user/selectors";
 import LoginPage from '../login-page/login-page';
 /* eslint-disable  */
-const MainPage = (props) => <div className="main-page">{props.children}</div>;
+const MainPage = () => <div className="main-page"><h1>main page</h1></div>;
 const Header = (props) => <div className="header">{props.children}</div>;
 const CitiesMenu = (props) => <div className="cities">{props.children}</div>;
 const OffersList = (props) => <div className="offers">{props.children}</div>;
@@ -17,7 +19,7 @@ const Footer = (props) => <div className="footer">{props.children}</div>;
 const OfferPage = (props) => <div className="offer-page">{props.children}</div>;
 const OfferData = (props) => <div className="offer">{props.children}</div>;
 /* eslint-enable  */
-const App = () => {
+const App = ({isUserAuthorized}) => {
 
   return (
     <BrowserRouter>
@@ -31,11 +33,14 @@ const App = () => {
           </MainPage>
         </Route>
         <Route exact path="/login">
-          <LoginPage>
-            <Header/>
-            <LoginForm/>
-            <Location/>
-          </LoginPage>
+          { isUserAuthorized ? <Redirect
+            to={`/`}
+          /> :
+            <LoginPage>
+              <Header/>
+              <LoginForm/>
+              <Location/>
+            </LoginPage>}
         </Route>
         <Route exact path="/favorites">
           <FavoritesPage>
@@ -62,4 +67,10 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  isUserAuthorized: getAuthorizationStatus(state)
+});
+
+export default connect(
+    mapStateToProps
+)(App);
