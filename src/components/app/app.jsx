@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import LoginPage from '../login-page/login-page';
+import OfferPage from '../offer-page/offer-page';
 /* eslint-disable  */
 const MainPage = (props) => <div className="main-page">{props.children}</div>;
 const Header = (props) => <div className="header">{props.children}</div>;
@@ -14,7 +15,6 @@ const Favorites = (props) => <div className="favorites">{props.children}</div>;
 const FavoritesItem = (props) => <div className="favorites__item">{props.children}</div>;
 const City = (props) => <div className="favorites__city">{props.children}</div>;
 const Footer = (props) => <div className="footer">{props.children}</div>;
-const OfferPage = (props) => <div className="offer-page">{props.children}</div>;
 const OfferData = (props) => <div className="offer">{props.children}</div>;
 /* eslint-enable  */
 const App = () => {
@@ -49,7 +49,7 @@ const App = () => {
             <Footer/>
           </FavoritesPage>
         </Route>
-        <Route exact path="/offer/:id">
+        <Route path="/offer">
           <OfferPage>
             <Header/>
             <OfferData/>
