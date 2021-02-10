@@ -10,7 +10,7 @@ const userSlice = createSlice({
   },
   reducers: {
     authorize: ((state, action) => {
-      const email = action.payload;
+      const {email} = action.payload;
 
       state.info.email = email;
       state.isAuthorized = true;

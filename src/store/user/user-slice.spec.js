@@ -19,7 +19,7 @@ describe(`user reducer`, () => {
           }
         }, {
           type: authorize.type,
-          payload: `test@gmail.com`
+          payload: {email: `test@gmail.com`}
         })).toEqual(
         {
           isAuthorized: true,
