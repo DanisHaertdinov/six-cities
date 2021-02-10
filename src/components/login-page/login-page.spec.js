@@ -66,10 +66,26 @@ describe(`login-page`, () => {
 
       expect(submitButton).toBeDisabled();
     });
+
+    it(`Should call onSubmit with email and password on click if active`, () => {
+      const onSubmit = jest.fn();
+
+      render(<LoginPage
+        onSubmit={onSubmit}
+      />);
+
+      const loginInput = screen.getByPlaceholderText(`Email`);
+      const passwordInput = screen.getByPlaceholderText(`Password`);
+      const submitButton = screen.getByRole(`button`);
+
+      userEvent.type(loginInput, `testEmail@gmail.com`);
+      userEvent.type(passwordInput, `1234`);
+      userEvent.click(submitButton);
+
+      expect(onSubmit).toHaveBeenCalledWith({email: `testEmail@gmail.com`, password: `1234`});
+    });
   });
 
-  it(`Should send request to server on submit button clicked`);
-
-  it(`Should show alert when server response whith error after submit`);
+  it(`Should show alert when server response with error after submit`);
 });
 
