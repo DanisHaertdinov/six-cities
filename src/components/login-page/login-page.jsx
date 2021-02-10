@@ -10,7 +10,7 @@ const LoginPage = ({onSubmit}) => {
   const handleEmailInputChange = (evt) => {
     setEmail(evt.target.value);
 
-    const isValid = checkEmailValidity(email);
+    const isValid = checkEmailValidity(evt.target.value);
     setEmailValidity(isValid);
   };
 

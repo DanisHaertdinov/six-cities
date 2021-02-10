@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
-import LoginPage from '../login-page/login-page';
+import LoginPage from '../login-page/login-page-container';
 /* eslint-disable  */
 const MainPage = () => <div className="main-page"><h1>main page</h1></div>;
 const Header = (props) => <div className="header">{props.children}</div>;
