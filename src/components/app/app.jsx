@@ -1,7 +1,5 @@
 import React from 'react';
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {getAuthorizationStatus} from "../../store/user/selectors";
 import LoginPage from '../login-page/login-page';
 /* eslint-disable  */
 const MainPage = () => <div className="main-page"><h1>main page</h1></div>;
@@ -67,10 +65,4 @@ const App = ({isUserAuthorized}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isUserAuthorized: getAuthorizationStatus(state)
-});
-
-export default connect(
-    mapStateToProps
-)(App);
+export default App;
