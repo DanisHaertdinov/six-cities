@@ -1,10 +1,10 @@
 import {render} from '@testing-library/react';
 import {BrowserRouter} from 'react-router-dom';
 
-const renderWithRouter = (ui, {route = `/`} = {}) => {
+const renderWithRouter = (component, {route = `/`} = {}) => {
   window.history.pushState({}, `Test page`, route);
 
-  return render(ui, {wrapper: BrowserRouter});
+  return render(component, {wrapper: BrowserRouter});
 };
 
 export {renderWithRouter};
