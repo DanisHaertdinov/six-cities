@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {renderWithRouter} from "../../util/test-helpers";
-import App from "./app";
+import App from './app';
 import {screen} from '@testing-library/react';
 
 describe(`app`, () => {

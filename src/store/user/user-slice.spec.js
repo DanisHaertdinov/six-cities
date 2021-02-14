@@ -1,4 +1,4 @@
-import user, {authorize} from "./user-slice";
+import user, {authorize} from './user-slice';
 
 describe(`user reducer`, () => {
   it(`Should handle initial state`, () => {
