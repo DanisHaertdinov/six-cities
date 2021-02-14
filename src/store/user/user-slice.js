@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
+import NameSpace from '../name-space';
 
 const userSlice = createSlice({
-  name: `user`,
+  name: NameSpace.USER,
   initialState: {
     isAuthorized: false,
     info: {
