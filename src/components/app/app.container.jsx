@@ -1,9 +1,9 @@
-import {getAuthorizationStatus} from "../../store/user/selectors";
+import {selectAuthorizationStatus} from "../../store/user/selectors";
 import {connect} from "react-redux";
 import App from "./app";
 
 const mapStateToProps = (state) => ({
-  isUserAuthorized: getAuthorizationStatus(state)
+  isUserAuthorized: selectAuthorizationStatus(state)
 });
 
 export default connect(
