@@ -3,13 +3,22 @@ import '@testing-library/jest-dom/extend-expect';
 import {renderWithRouter} from "../../util/test-helpers";
 import App from './app';
 import {screen} from '@testing-library/react';
+import {configureStore} from '@reduxjs/toolkit';
+import {Provider} from 'react-redux';
+import rootReducer from '../../store/reducer';
 
 describe(`app`, () => {
   it(`Should render login page if user unauthorized to "/login" path`, () => {
+    const mockStore = configureStore({
+      reducer: rootReducer
+    });
+
     renderWithRouter(
-        <App
-          isUserAuthorized={false}
-        />,
+        <Provider store={mockStore}>
+          <App
+            isUserAuthorized={false}
+          />
+        </Provider>,
         {route: `/login`}
     );
 
