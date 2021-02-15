@@ -31,14 +31,17 @@ const App = ({isUserAuthorized}) => {
           </MainPage>
         </Route>
         <Route exact path="/login">
-          { isUserAuthorized ? <Redirect
-            to={`/`}
-          /> :
-            <LoginPage>
-              <Header/>
-              <LoginForm/>
-              <Location/>
-            </LoginPage>}
+          {
+             isUserAuthorized
+               ? <Redirect
+                    to={`/`}
+                  />
+               : <LoginPage>
+                  <Header/>
+                  <LoginForm/>
+                  <Location/>
+                </LoginPage>
+          }
         </Route>
         <Route exact path="/favorites">
           <FavoritesPage>
