@@ -3,4 +3,12 @@ const checkEmailValidity = (email) => {
   return EXPRESSION.test(String(email).toLowerCase());
 };
 
-export {checkEmailValidity};
+const capitalizeFirstLetter = (string) => {
+  return string[0].toUpperCase() + string.slice(1);
+};
+
+const convertNumberToPercent = (portion, total) => {
+  return portion / total * 100;
+};
+
+export {checkEmailValidity, capitalizeFirstLetter, convertNumberToPercent};
