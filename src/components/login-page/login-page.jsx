@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {checkEmailValidity} from '../../util/util';
 
 const LoginPage = ({onSubmit}) => {
   const [isEmailValid, setEmailValidity] = useState(false);
   const [isPasswordValid, setPasswordValidity] = useState(false);
-  const [email, setEmail] = useState(``);
-  const [password, setPassword] = useState(``);
+
+  const emailInput = useRef(null);
+  const passwordInput = useRef(null);
 
   const handleEmailInputChange = (evt) => {
-    setEmail(evt.target.value);
-
     const isValid = checkEmailValidity(evt.target.value);
+
     setEmailValidity(isValid);
   };
 
@@ -18,12 +18,13 @@ const LoginPage = ({onSubmit}) => {
     if (evt.target.value !== ``) {
       setPasswordValidity(true);
     }
-
-    setPassword(evt.target.value);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const email = emailInput.current.value;
+    const password = passwordInput.current.value;
+
     onSubmit({email, password});
   };
 
@@ -58,11 +59,11 @@ const LoginPage = ({onSubmit}) => {
             <form onSubmit={handleSubmit} className="login__form form" action="#" method="post">
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input value={email} onChange={handleEmailInputChange} className="login__input form__input" type="email" name="email" placeholder="Email" required />
+                <input ref={emailInput} onChange={handleEmailInputChange} className="login__input form__input" type="email" name="email" placeholder="Email" required />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                <input value={password} onChange={handlePasswordInputChange} className="login__input form__input" type="password" name="password" placeholder="Password" required />
+                <input ref={passwordInput} onChange={handlePasswordInputChange} className="login__input form__input" type="password" name="password" placeholder="Password" required />
               </div>
               <button className="login__submit form__submit button" type="submit" disabled = {!(isEmailValid && isPasswordValid)}>Sign in</button>
             </form>
