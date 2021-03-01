@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
-import React from 'react';
+import * as React from 'react';
 import OfferPage from './offer-page';
 
 describe(`offer-page`, () => {
@@ -296,7 +296,7 @@ describe(`offer-page`, () => {
         offer={hostSuperMarkTestOffer}
       />);
 
-      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode;
+      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode as HTMLImageElement;
 
       expect(renderedHostAvatarWrapper.classList.contains(`property__avatar-wrapper--pro`)).toBe(true);
     });
@@ -316,7 +316,7 @@ describe(`offer-page`, () => {
         offer={hostSuperMarkTestOffer}
       />);
 
-      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode;
+      const renderedHostAvatarWrapper = screen.getByRole(`img`, {name: /host avatar/i}).parentNode as HTMLImageElement;
 
       expect(renderedHostAvatarWrapper.classList.contains(`property__avatar-wrapper--pro`)).toBe(false);
     });

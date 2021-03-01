@@ -1,29 +1,35 @@
-import React, {useState, useRef} from 'react';
+import * as React from 'react';
+import {useState, useRef, FunctionComponent} from 'react';
 import {checkEmailValidity} from '../../util/util';
+import {User} from '../../types/user';
 
-const LoginPage = ({onSubmit}) => {
-  const [isEmailValid, setEmailValidity] = useState(false);
-  const [isPasswordValid, setPasswordValidity] = useState(false);
+interface Props {
+  onSubmit(_user:User): void
+}
 
-  const emailInput = useRef(null);
-  const passwordInput = useRef(null);
+const LoginPage: FunctionComponent<Props> = ({onSubmit}: Props) => {
+  const [isEmailValid, setEmailValidity] = useState<boolean>(false);
+  const [isPasswordValid, setPasswordValidity] = useState<boolean>(false);
 
-  const handleEmailInputChange = (evt) => {
-    const isValid = checkEmailValidity(evt.target.value);
+  const emailInput = useRef<HTMLInputElement>(null);
+  const passwordInput = useRef<HTMLInputElement>(null);
+
+  const handleEmailInputChange = (evt: React.ChangeEvent<HTMLInputElement>):void => {
+    const isValid:boolean = checkEmailValidity(evt.target.value);
 
     setEmailValidity(isValid);
   };
 
-  const handlePasswordInputChange = (evt) => {
+  const handlePasswordInputChange = (evt: React.ChangeEvent<HTMLInputElement>):void => {
     if (evt.target.value !== ``) {
       setPasswordValidity(true);
     }
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>):void => {
     evt.preventDefault();
-    const email = emailInput.current.value;
-    const password = passwordInput.current.value;
+    const email:string = emailInput.current.value;
+    const password:string = passwordInput.current.value;
 
     onSubmit({email, password});
   };

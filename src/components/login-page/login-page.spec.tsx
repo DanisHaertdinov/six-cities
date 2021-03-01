@@ -1,16 +1,16 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
+import * as React from 'react';
 import LoginPage from './login-page';
 
 describe(`login-page`, () => {
   it(`Should render correct user,password inputs and submit button`, () => {
-    render(<LoginPage/>);
+    render(<LoginPage onSubmit={jest.fn()}/>);
 
-    const loginInput = screen.getByPlaceholderText(`Email`);
-    const passwordInput = screen.getByPlaceholderText(`Password`);
-    const submitButton = screen.getByRole(`button`);
+    const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
+    const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
+    const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
     expect(loginInput.type).toEqual(`email`);
 
@@ -21,19 +21,19 @@ describe(`login-page`, () => {
 
   describe(`submit button`, () => {
     it(`Should be disabled by default`, () => {
-      render(<LoginPage/>);
+      render(<LoginPage onSubmit={jest.fn()}/>);
 
-      const submitButton = screen.getByRole(`button`);
+      const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
       expect(submitButton).toBeDisabled();
     });
 
     it(`Should be active if email is valid and password input not empty`, () => {
-      render(<LoginPage/>);
+      render(<LoginPage onSubmit={jest.fn()}/>);
 
-      const loginInput = screen.getByPlaceholderText(`Email`);
-      const passwordInput = screen.getByPlaceholderText(`Password`);
-      const submitButton = screen.getByRole(`button`);
+      const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
+      const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
+      const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
       userEvent.type(loginInput, `testEmail@gmail.com`);
       userEvent.type(passwordInput, `1234`);
@@ -42,11 +42,11 @@ describe(`login-page`, () => {
     });
 
     it(`Should be disabled if email is not valid or password input is empty`, () => {
-      render(<LoginPage/>);
+      render(<LoginPage onSubmit={jest.fn()}/>);
 
-      const loginInput = screen.getByPlaceholderText(`Email`);
-      const passwordInput = screen.getByPlaceholderText(`Password`);
-      const submitButton = screen.getByRole(`button`);
+      const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
+      const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
+      const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
       userEvent.type(loginInput, `@gmail.com`);
       userEvent.type(passwordInput, `1234`);
@@ -55,11 +55,11 @@ describe(`login-page`, () => {
     });
 
     it(`Should be disabled if password input is empty`, () => {
-      render(<LoginPage/>);
+      render(<LoginPage onSubmit={jest.fn()}/>);
 
-      const loginInput = screen.getByPlaceholderText(`Email`);
-      const passwordInput = screen.getByPlaceholderText(`Password`);
-      const submitButton = screen.getByRole(`button`);
+      const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
+      const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
+      const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
       userEvent.type(loginInput, `testEmail@gmail.com`);
       userEvent.type(passwordInput, ``);
@@ -74,9 +74,9 @@ describe(`login-page`, () => {
         onSubmit={onSubmit}
       />);
 
-      const loginInput = screen.getByPlaceholderText(`Email`);
-      const passwordInput = screen.getByPlaceholderText(`Password`);
-      const submitButton = screen.getByRole(`button`);
+      const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
+      const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
+      const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
       userEvent.type(loginInput, `testEmail@gmail.com`);
       userEvent.type(passwordInput, `1234`);

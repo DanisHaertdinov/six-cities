@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import {renderWithRouter} from "../../util/test-helpers";
 import App from './app';
