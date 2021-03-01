@@ -1,3 +1,0 @@
-const OFFER_MAX_RATING = 5;
-
-export {OFFER_MAX_RATING};
