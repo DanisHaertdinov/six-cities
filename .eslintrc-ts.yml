@@ -1,4 +1,4 @@
-extends: ['./.eslintrc.yml', 'plugin:@typescript-eslint/eslint-recommended']
+extends: ['./.eslintrc.yml', 'plugin:@typescript-eslint/recommended']
 
 parser: '@typescript-eslint/parser'
 
