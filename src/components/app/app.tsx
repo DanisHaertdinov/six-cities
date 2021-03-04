@@ -21,10 +21,10 @@ const OfferData = (props) => <div className="offer">{props.children}</div>;
 /* eslint-enable  */
 
 interface AppProps {
-  isUserAuthorized: boolean
+  isUserAuthorized: boolean;
 }
 
-const App: FunctionComponent<AppProps> = ({isUserAuthorized}:AppProps) => {
+const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
 
   return (
     <BrowserRouter>

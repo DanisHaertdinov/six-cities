@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import App from './app';
 
 interface RootState {
-  isAuthorized: boolean,
+  isAuthorized: boolean;
   info: {
-    email: string
-  }
+    email: string;
+  };
 }
 
 const mapStateToProps = (state: RootState) => ({

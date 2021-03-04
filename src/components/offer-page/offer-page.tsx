@@ -4,13 +4,13 @@ import {OFFER_MAX_RATING} from '../../const/const';
 import {Offer} from "../../types/offer";
 import {FunctionComponent} from "react";
 
-const MAX_OFFER_PHOTOS_NUMBER:number = 6;
+const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 interface Props {
-  offer?: Offer
+  offer?: Offer;
 }
 
-const OfferScreen: FunctionComponent<Props> = (props:Props) => {
+const OfferScreen: FunctionComponent<Props> = (props: Props) => {
   const {offer} = props;
   const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price, goods, host} = offer;
   const {avatar, name, isSuper} = host;

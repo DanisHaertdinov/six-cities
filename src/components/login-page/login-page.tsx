@@ -4,7 +4,7 @@ import {checkEmailValidity} from '../../util/util';
 import {User} from '../../types/user';
 
 interface Props {
-  onSubmit(_user:User): void
+  onSubmit(_user: User): void;
 }
 
 const LoginPage: FunctionComponent<Props> = ({onSubmit}: Props) => {
@@ -14,22 +14,22 @@ const LoginPage: FunctionComponent<Props> = ({onSubmit}: Props) => {
   const emailInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
 
-  const handleEmailInputChange = (evt: React.ChangeEvent<HTMLInputElement>):void => {
-    const isValid:boolean = checkEmailValidity(evt.target.value);
+  const handleEmailInputChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    const isValid: boolean = checkEmailValidity(evt.target.value);
 
     setEmailValidity(isValid);
   };
 
-  const handlePasswordInputChange = (evt: React.ChangeEvent<HTMLInputElement>):void => {
+  const handlePasswordInputChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     if (evt.target.value !== ``) {
       setPasswordValidity(true);
     }
   };
 
-  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>):void => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
-    const email:string = emailInput.current.value;
-    const password:string = passwordInput.current.value;
+    const email: string = emailInput.current.value;
+    const password: string = passwordInput.current.value;
 
     onSubmit({email, password});
   };
