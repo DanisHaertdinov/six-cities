@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
 import {OFFER_MAX_RATING} from '../../const/const';
-import {Offer} from "../../types/offer";
-import {FunctionComponent} from "react";
+import {Offer} from '../../types/offer';
+import {FunctionComponent} from 'react';
 
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 

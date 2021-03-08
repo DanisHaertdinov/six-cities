@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import NameSpace from '../name-space';
-import {User} from "../../types/user";
+import {User} from '../../types/user';
 
 interface UserState {
   isAuthorized: boolean;

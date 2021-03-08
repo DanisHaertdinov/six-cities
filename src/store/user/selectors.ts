@@ -1,5 +1,5 @@
 import NameSpace from '../name-space';
-import {RootState} from "../reducer";
+import {RootState} from '../reducer';
 
 const NAME_SPACE = NameSpace.USER;
 

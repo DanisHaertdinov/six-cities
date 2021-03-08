@@ -1,7 +1,7 @@
 import {selectAuthorizationStatus} from '../../store/user/selectors';
 import {connect} from 'react-redux';
 import App from './app';
-import {RootState} from "../../store/reducer";
+import {RootState} from '../../store/reducer';
 
 const mapStateToProps = (state: RootState) => ({
   isUserAuthorized: selectAuthorizationStatus(state)
