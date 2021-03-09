@@ -69,6 +69,7 @@ const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
           {/*  /!*<Map/>*!/*/}
           {/*  /!*<OffersList/>*!/*/}
           {/* </OfferPage>*/}
+          {/*// TODO: remove commented code when offer page will be render by history api*/}
         </Route>
       </Switch>
     </BrowserRouter>
