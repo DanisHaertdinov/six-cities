@@ -19,6 +19,7 @@ const PageWrapperClassNames: {
 
 const PageWrapper: FunctionComponent<Props> = ({location, children}: Props) => {
   const className = PageWrapperClassNames[location] || PageWrapperClassNames[`DEFAULT`];
+
   return (
     <div
       className={className}

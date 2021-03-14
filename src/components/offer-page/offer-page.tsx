@@ -8,7 +8,7 @@ const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 interface Props {
   offer?: Offer;
-  /*// TODO: remove optional operator when offer page will be render by history api*/
+  /* // TODO: remove optional operator when offer page will be render by history api*/
 }
 
 const OfferScreen: FunctionComponent<Props> = (props: Props) => {
