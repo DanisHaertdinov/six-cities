@@ -2,7 +2,7 @@ import user, {authorize} from './user-slice';
 
 describe(`user reducer`, () => {
   it(`Should handle initial state`, () => {
-    expect(user(undefined, {})).toEqual({
+    expect(user(undefined, {type: ``})).toEqual({
       isAuthorized: false,
       info: {
         email: ``

@@ -1,4 +1,6 @@
-const offers = [
+import {Offer} from './types/offer';
+
+const offers: Offer[] = [
   {
     id: 4232,
     city: `Paris`,

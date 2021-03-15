@@ -1,10 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
 import {OFFER_MAX_RATING} from '../../const/const';
+import {Offer} from '../../types/offer';
+import {FunctionComponent} from 'react';
 
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 
-const OfferScreen = (props) => {
+interface Props {
+  offer?: Offer;
+  /*// TODO: remove optional operator when offer page will be render by history api*/
+}
+
+const OfferScreen: FunctionComponent<Props> = (props: Props) => {
   const {offer} = props;
   const {title, description, isPremium, type, rating, numberOfBedrooms, capacity, price, goods, host} = offer;
   const {avatar, name, isSuper} = host;

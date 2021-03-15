@@ -1,10 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
 import LoginPage from '../login-page/login-page.container';
 import OfferPage from '../offer-page/offer-page';
+import {FunctionComponent} from 'react';
 
 /* eslint-disable  */
-const MainPage = () => <div className="main-page"><h1>main page</h1></div>;
+const MainPage = (props) => <div className="main-page"><h1>main page</h1>{props.children}</div>;
 const Header = (props) => <div className="header">{props.children}</div>;
 const CitiesMenu = (props) => <div className="cities">{props.children}</div>;
 const OffersList = (props) => <div className="offers">{props.children}</div>;
@@ -18,7 +19,12 @@ const City = (props) => <div className="favorites__city">{props.children}</div>;
 const Footer = (props) => <div className="footer">{props.children}</div>;
 const OfferData = (props) => <div className="offer">{props.children}</div>;
 /* eslint-enable  */
-const App = ({isUserAuthorized}) => {
+
+interface AppProps {
+  isUserAuthorized: boolean;
+}
+
+const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
 
   return (
     <BrowserRouter>
@@ -57,12 +63,13 @@ const App = ({isUserAuthorized}) => {
           </FavoritesPage>
         </Route>
         <Route path="/offer">
-          <OfferPage>
-            <Header/>
-            <OfferData/>
-            <Map/>
-            <OffersList/>
-          </OfferPage>
+          <OfferPage/>
+          {/*  /!*<Header/>*!/*/}
+          {/*  /!*<OfferData/>*!/*/}
+          {/*  /!*<Map/>*!/*/}
+          {/*  /!*<OffersList/>*!/*/}
+          {/* </OfferPage>*/}
+          {/*// TODO: remove commented code when offer page will be render by history api*/}
         </Route>
       </Switch>
     </BrowserRouter>
