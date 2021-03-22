@@ -5,6 +5,7 @@ import OfferCard from './offer-card';
 import {offers} from '../../test-data';
 import {Offer} from '../../types/offer';
 import {renderWithRouter} from '../../util/test-helpers';
+import userEvent from '@testing-library/user-event';
 
 describe(`OfferCard`, () => {
   it(`Should render offer title`, () => {
@@ -16,6 +17,8 @@ describe(`OfferCard`, () => {
     renderWithRouter(
         <OfferCard
           offer={testOffer}
+          isAuthorized={true}
+          onFavoriteClick={jest.fn()}
         />
     );
 
@@ -32,6 +35,8 @@ describe(`OfferCard`, () => {
     renderWithRouter(
         <OfferCard
           offer={testOffer}
+          isAuthorized={true}
+          onFavoriteClick={jest.fn()}
         />
     );
 
@@ -49,6 +54,8 @@ describe(`OfferCard`, () => {
 
     renderWithRouter(<OfferCard
       offer = {premiumTestOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
     />);
 
     const premiumMark: HTMLElement = screen.getByText(`Premium`);
@@ -65,6 +72,8 @@ describe(`OfferCard`, () => {
 
     renderWithRouter(<OfferCard
       offer = {premiumTestOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
     />);
 
     const premiumMark: HTMLElement = screen.queryByText(`Premium`);
@@ -81,6 +90,8 @@ describe(`OfferCard`, () => {
 
     renderWithRouter(<OfferCard
       offer = {priceTestOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
     />);
 
     const renderedPrice: HTMLElement = screen.getByText(`€${price}`);
@@ -97,6 +108,8 @@ describe(`OfferCard`, () => {
 
     renderWithRouter(<OfferCard
       offer = {typeTestOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
     />);
 
     const renderedType: HTMLElement = screen.queryByText(`House`);
@@ -114,10 +127,71 @@ describe(`OfferCard`, () => {
 
     renderWithRouter(<OfferCard
       offer = {ratingTestOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
     />);
 
     const starsRating = screen.queryByTestId(`card-stars`);
 
     expect(starsRating).toHaveStyle(`width: 46%`);
+  });
+
+  it(`Should render favorite mark as button if user is authorized`, () => {
+    const isFavorite = true;
+    const testOffer: Offer = {
+      ...offers[0],
+      isFavorite,
+    };
+
+    renderWithRouter(<OfferCard
+      offer = {testOffer}
+      isAuthorized={true}
+      onFavoriteClick={jest.fn()}
+    />);
+
+    const favoriteButton = screen.getByRole(`button`, {name: /In bookmarks/i});
+    const favoriteLink = screen.queryByRole(`link`, {name: /In bookmarks/i});
+
+    expect(favoriteButton).toBeInTheDocument();
+    expect(favoriteLink).toBe(null);
+  });
+
+  it(`Should handle onFavoriteClick if user is authorized`, () => {
+    const onFavoriteClick = jest.fn();
+    const isFavorite = true;
+    const testOffer: Offer = {
+      ...offers[0],
+      isFavorite,
+    };
+
+    renderWithRouter(<OfferCard
+      offer = {testOffer}
+      isAuthorized={true}
+      onFavoriteClick={onFavoriteClick}
+    />);
+
+    userEvent.click(screen.getByRole(`button`, {name: /In bookmarks/i}));
+
+    expect(onFavoriteClick).toHaveBeenCalledWith(testOffer.id);
+  });
+
+  it(`Should render favorite mark as link if user is not authorized`, () => {
+    const isFavorite = true;
+    const testOffer: Offer = {
+      ...offers[0],
+      isFavorite,
+    };
+
+    renderWithRouter(<OfferCard
+      offer = {testOffer}
+      isAuthorized={false}
+      onFavoriteClick={jest.fn()}
+    />);
+
+    const favoriteButton = screen.queryByRole(`button`, {name: /In bookmarks/i});
+    const favoriteLink = screen.getByRole(`link`, {name: /In bookmarks/i});
+
+    expect(favoriteLink).toBeInTheDocument();
+    expect(favoriteButton).toBe(null);
   });
 });

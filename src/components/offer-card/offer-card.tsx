@@ -4,15 +4,30 @@ import {OFFER_MAX_RATING, ROUTES} from '../../const/const';
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
+import FavoriteMark from '../favorite-mark/favorite-mark';
 
 interface Props {
   offer: Offer;
+  onImageClick?: (id: number) => void;
+  isAuthorized: boolean;
+  onFavoriteClick: (id: number) => void;
 }
 
-const OfferCard: FunctionComponent<Props> = ({offer}: Props) => {
-  const {title, photos, isPremium, price, type, rating, id} = offer;
+const OfferCard: FunctionComponent<Props> = ({offer, onImageClick, isAuthorized, onFavoriteClick}: Props) => {
+  const {title, photos, isPremium, price, type, rating, id, isFavorite} = offer;
   const capitalizedType = capitalizeFirstLetter(type);
   const ratingInPercent = convertNumberToPercent(rating, OFFER_MAX_RATING);
+
+  const handleImageClick = (evt: React.MouseEvent<HTMLElement>): void => {
+    evt.preventDefault();
+    if (onImageClick) {
+      onImageClick(id);
+    }
+  };
+
+  const handleFavoriteClick = (): void => {
+    onFavoriteClick(id);
+  };
 
   return (
     <article className="cities__place-card place-card">
@@ -23,7 +38,7 @@ const OfferCard: FunctionComponent<Props> = ({offer}: Props) => {
        </div>
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={handleImageClick}>
           <img className="place-card__image" src={photos[0]} width={260} height={200} alt="Place image" />
         </a>
       </div>
@@ -33,12 +48,11 @@ const OfferCard: FunctionComponent<Props> = ({offer}: Props) => {
             <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width={18} height={19}>
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+          <FavoriteMark
+            asLink={!isAuthorized}
+            isActive={isFavorite}
+            onClick={handleFavoriteClick}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
