@@ -4,9 +4,11 @@ import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import LoginPage from './login-page';
 
+const noop = () => {};
+
 describe(`login-page`, () => {
   it(`Should render correct user,password inputs and submit button`, () => {
-    render(<LoginPage onSubmit={jest.fn()}/>);
+    render(<LoginPage onSubmit={noop}/>);
 
     const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
     const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
@@ -21,7 +23,7 @@ describe(`login-page`, () => {
 
   describe(`submit button`, () => {
     it(`Should be disabled by default`, () => {
-      render(<LoginPage onSubmit={jest.fn()}/>);
+      render(<LoginPage onSubmit={noop}/>);
 
       const submitButton = screen.getByRole(`button`) as HTMLInputElement;
 
@@ -29,7 +31,7 @@ describe(`login-page`, () => {
     });
 
     it(`Should be active if email is valid and password input not empty`, () => {
-      render(<LoginPage onSubmit={jest.fn()}/>);
+      render(<LoginPage onSubmit={noop}/>);
 
       const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
       const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
@@ -42,7 +44,7 @@ describe(`login-page`, () => {
     });
 
     it(`Should be disabled if email is not valid or password input is empty`, () => {
-      render(<LoginPage onSubmit={jest.fn()}/>);
+      render(<LoginPage onSubmit={noop}/>);
 
       const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
       const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;
@@ -55,7 +57,7 @@ describe(`login-page`, () => {
     });
 
     it(`Should be disabled if password input is empty`, () => {
-      render(<LoginPage onSubmit={jest.fn()}/>);
+      render(<LoginPage onSubmit={noop}/>);
 
       const loginInput = screen.getByPlaceholderText(`Email`) as HTMLInputElement;
       const passwordInput = screen.getByPlaceholderText(`Password`) as HTMLInputElement;

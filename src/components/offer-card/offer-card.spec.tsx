@@ -7,6 +7,8 @@ import {Offer} from '../../types/offer';
 import {renderWithRouter} from '../../util/test-helpers';
 import userEvent from '@testing-library/user-event';
 
+const noop = () => {};
+
 describe(`OfferCard`, () => {
   it(`Should render offer title`, () => {
     const testOffer: Offer = {
@@ -18,7 +20,7 @@ describe(`OfferCard`, () => {
         <OfferCard
           offer={testOffer}
           isAuthorized={true}
-          onFavoriteClick={jest.fn()}
+          onFavoriteClick={noop}
         />
     );
 
@@ -36,7 +38,7 @@ describe(`OfferCard`, () => {
         <OfferCard
           offer={testOffer}
           isAuthorized={true}
-          onFavoriteClick={jest.fn()}
+          onFavoriteClick={noop}
         />
     );
 
@@ -55,7 +57,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {premiumTestOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const premiumMark: HTMLElement = screen.getByText(`Premium`);
@@ -73,7 +75,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {premiumTestOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const premiumMark: HTMLElement = screen.queryByText(`Premium`);
@@ -91,7 +93,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {priceTestOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const renderedPrice: HTMLElement = screen.getByText(`€${price}`);
@@ -109,7 +111,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {typeTestOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const renderedType: HTMLElement = screen.queryByText(`House`);
@@ -128,7 +130,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {ratingTestOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const starsRating = screen.queryByTestId(`card-stars`);
@@ -146,7 +148,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {testOffer}
       isAuthorized={true}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const favoriteButton = screen.getByRole(`button`, {name: /In bookmarks/i});
@@ -185,7 +187,7 @@ describe(`OfferCard`, () => {
     renderWithRouter(<OfferCard
       offer = {testOffer}
       isAuthorized={false}
-      onFavoriteClick={jest.fn()}
+      onFavoriteClick={noop}
     />);
 
     const favoriteButton = screen.queryByRole(`button`, {name: /In bookmarks/i});

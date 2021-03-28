@@ -6,13 +6,15 @@ import {renderWithRouter} from '../../util/test-helpers';
 import userEvent from '@testing-library/user-event';
 import {ROUTES} from '../../const/const';
 
+const noop = () => {};
+
 describe(`FavoriteMark`, () => {
   it(`Should render as link to login-page prop if "asLink" prop is true`, () => {
     renderWithRouter(
         <FavoriteMark
           asLink={true}
           isActive={true}
-          onClick={jest.fn()}
+          onClick={noop}
         />
     );
 
@@ -27,7 +29,7 @@ describe(`FavoriteMark`, () => {
         <FavoriteMark
           asLink={false}
           isActive={true}
-          onClick={jest.fn()}
+          onClick={noop}
         />
     );
 
@@ -41,7 +43,7 @@ describe(`FavoriteMark`, () => {
         <FavoriteMark
           asLink={false}
           isActive={true}
-          onClick={jest.fn()}
+          onClick={noop}
         />
     );
 
@@ -55,7 +57,7 @@ describe(`FavoriteMark`, () => {
         <FavoriteMark
           asLink={false}
           isActive={false}
-          onClick={jest.fn()}
+          onClick={noop}
         />
     );
 
