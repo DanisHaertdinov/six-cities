@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom/extend-expect';
 import {screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import OfferCard from './offer-card';
 import {offers} from '../../test-data';
 import {Offer} from '../../types/offer';
 import {renderWithRouter} from '../../util/test-helpers';
-import userEvent from '@testing-library/user-event';
 import {noop} from '../../util/util';
+import OfferCard from './offer-card';
 
 describe(`OfferCard`, () => {
   it(`Should render offer title`, () => {

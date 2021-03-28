@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
-import * as React from 'react';
-import FavoriteMark from './favorite-mark';
-import {renderWithRouter} from '../../util/test-helpers';
 import userEvent from '@testing-library/user-event';
+import * as React from 'react';
 import {ROUTES} from '../../const/const';
+import {renderWithRouter} from '../../util/test-helpers';
 import {noop} from '../../util/util';
+import FavoriteMark from './favorite-mark';
 
 describe(`FavoriteMark`, () => {
   it(`Should render as link to login-page prop if "asLink" prop is true`, () => {

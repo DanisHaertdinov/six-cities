@@ -1,9 +1,9 @@
 import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
+import {ROUTES} from '../../const/const';
 import LoginPage from '../login-page/login-page.container';
 import OfferPage from '../offer-page/offer-page';
-import {FunctionComponent} from 'react';
-import {ROUTES} from '../../const/const';
 
 /* eslint-disable  */
 const MainPage = (props) => <div className="main-page"><h1>main page</h1>{props.children}</div>;

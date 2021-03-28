@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {FunctionComponent} from 'react';
-import {OFFER_MAX_RATING, ROUTES} from '../../const/const';
 import {Link} from 'react-router-dom';
+import {OFFER_MAX_RATING, ROUTES} from '../../const/const';
 import {Offer} from '../../types/offer';
 import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
 import FavoriteMark from '../favorite-mark/favorite-mark';

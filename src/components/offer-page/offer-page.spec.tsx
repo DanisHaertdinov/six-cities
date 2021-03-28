@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
 import * as React from 'react';
-import OfferPage from './offer-page';
 import {offers} from '../../test-data';
+import OfferPage from './offer-page';
 
 describe(`offer-page`, () => {
   it(`Should render offer photos`, () => {

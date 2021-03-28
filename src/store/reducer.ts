@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import userReducer from './user/user-slice';
-import NameSpace from './name-space';
 import dataReducer from './data/data-slice';
+import NameSpace from './name-space';
+import userReducer from './user/user-slice';
 
 const rootReducer = combineReducers({
   [NameSpace.USER]: userReducer,

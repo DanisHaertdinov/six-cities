@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
 import * as React from 'react';
-import Header from './header';
-import {User} from '../../types/user';
 import {BrowserRouter} from 'react-router-dom';
 import {ROUTES} from '../../const/const';
+import {User} from '../../types/user';
+import Header from './header';
 
 
 describe(`Header`, () => {

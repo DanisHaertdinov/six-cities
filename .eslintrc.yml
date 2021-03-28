@@ -11,7 +11,14 @@ parserOptions:
   ecmaVersion: 2018
   sourceType: module
 
-plugins: ['react']
+plugins: ['react', 'eslint-plugin-import']
+
+rules: {
+  'import/order': ["error", {
+    "alphabetize": {"order": "asc", "caseInsensitive": true},
+    "groups": ["builtin", "external", "parent", "sibling", "index"]
+  }]
+}
 
 settings:
   react:

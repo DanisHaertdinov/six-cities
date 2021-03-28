@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {FunctionComponent} from 'react';
+import {Link} from 'react-router-dom';
 import {ROUTES} from '../../const/const';
 import {User} from '../../types/user';
-import {Link} from 'react-router-dom';
 
 interface Props {
   isAuthorized: boolean;
