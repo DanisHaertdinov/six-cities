@@ -6,8 +6,7 @@ import {offers} from '../../test-data';
 import {Offer} from '../../types/offer';
 import {renderWithRouter} from '../../util/test-helpers';
 import userEvent from '@testing-library/user-event';
-
-const noop = () => {};
+import {noop} from '../../util/util';
 
 describe(`OfferCard`, () => {
   it(`Should render offer title`, () => {

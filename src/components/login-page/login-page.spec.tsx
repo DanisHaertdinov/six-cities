@@ -3,8 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import LoginPage from './login-page';
-
-const noop = () => {};
+import {noop} from '../../util/util';
 
 describe(`login-page`, () => {
   it(`Should render correct user,password inputs and submit button`, () => {

@@ -5,8 +5,7 @@ import FavoriteMark from './favorite-mark';
 import {renderWithRouter} from '../../util/test-helpers';
 import userEvent from '@testing-library/user-event';
 import {ROUTES} from '../../const/const';
-
-const noop = () => {};
+import {noop} from '../../util/util';
 
 describe(`FavoriteMark`, () => {
   it(`Should render as link to login-page prop if "asLink" prop is true`, () => {
