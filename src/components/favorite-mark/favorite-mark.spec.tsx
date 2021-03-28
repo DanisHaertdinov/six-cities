@@ -19,9 +19,11 @@ describe(`FavoriteMark`, () => {
     );
 
     const favoriteLink = screen.getByRole(`link`, {name: /In bookmarks/i});
+    const favoriteButton = screen.queryByRole(`button`, {name: /In bookmarks/i});
 
     expect(favoriteLink).toBeInTheDocument();
     expect(favoriteLink.getAttribute(`href`)).toBe(ROUTES.LOGIN);
+    expect(favoriteButton).toBe(null);
   });
 
   it(`Should render as button if "asLink" prop is false`, () => {
@@ -34,8 +36,10 @@ describe(`FavoriteMark`, () => {
     );
 
     const favoriteButton = screen.getByRole(`button`, {name: /In bookmarks/i});
+    const favoriteLInk = screen.queryByRole(`link`, {name: /In bookmarks/i});
 
     expect(favoriteButton).toBeInTheDocument();
+    expect(favoriteLInk).toBe(null);
   });
 
   it(`Should render properly if "isActive" prop is true`, () => {
@@ -52,7 +56,7 @@ describe(`FavoriteMark`, () => {
     expect(favoriteButton.classList.contains(`place-card__bookmark-button--active`)).toBe(true);
   });
 
-  it(`Should properly if "isActive" prop is false`, () => {
+  it(`Should render properly if "isActive" prop is false`, () => {
     render(
         <FavoriteMark
           asLink={false}
