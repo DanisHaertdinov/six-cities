@@ -1,15 +1,15 @@
 import '@testing-library/jest-dom/extend-expect';
 import {render, screen} from '@testing-library/react';
 import * as React from 'react';
-import PageWrapper from './page-wrapper';
-
+import PageWrapper, {TEST_ID} from './page-wrapper';
 
 describe(`PageWrapper`, () => {
   it(`Should render children component`, () => {
     render(
         <PageWrapper location={`/`}>
           <h1>test children</h1>
-        </PageWrapper>);
+        </PageWrapper>
+    );
 
     expect(screen.getByText(`test children`)).toBeInTheDocument();
   });
@@ -18,9 +18,10 @@ describe(`PageWrapper`, () => {
     render(
         <PageWrapper location={`/`}>
           <h1>test children</h1>
-        </PageWrapper>);
+        </PageWrapper>
+    );
 
-    const pageWrapper = screen.getByTestId(`page-wrapper`);
+    const pageWrapper = screen.getByTestId(TEST_ID);
 
     expect(pageWrapper.classList.contains(`page--gray`)).toBe(true);
     expect(pageWrapper.classList.contains(`page--main`)).toBe(true);
@@ -30,9 +31,10 @@ describe(`PageWrapper`, () => {
     render(
         <PageWrapper location={`/login`}>
           <h1>test children</h1>
-        </PageWrapper>);
+        </PageWrapper>
+    );
 
-    const pageWrapper = screen.getByTestId(`page-wrapper`);
+    const pageWrapper = screen.getByTestId(TEST_ID);
 
     expect(pageWrapper.classList.contains(`page--gray`)).toBe(true);
     expect(pageWrapper.classList.contains(`page--login`)).toBe(true);
@@ -42,9 +44,10 @@ describe(`PageWrapper`, () => {
     render(
         <PageWrapper location={`/test`}>
           <h1>test children</h1>
-        </PageWrapper>);
+        </PageWrapper>
+    );
 
-    const pageWrapper = screen.getByTestId(`page-wrapper`);
+    const pageWrapper = screen.getByTestId(TEST_ID);
 
     expect(pageWrapper.classList.contains(`page`)).toBe(true);
   });
