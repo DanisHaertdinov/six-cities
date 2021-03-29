@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState, useRef, FunctionComponent} from 'react';
-import {checkEmailValidity} from '../../util/util';
 import {User} from '../../types/user';
+import {checkEmailValidity} from '../../util/util';
 
 interface Props {
   onSubmit(_user: User): void;

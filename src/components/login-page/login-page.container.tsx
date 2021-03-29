@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import LoginPage from './login-page';
 import {authorize} from '../../store/user/user-slice';
+import LoginPage from './login-page';
 
 
 const mapDispatchToProps = {onSubmit: authorize};

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
+import {FunctionComponent} from 'react';
 import {OFFER_MAX_RATING} from '../../const/const';
 import {Offer} from '../../types/offer';
-import {FunctionComponent} from 'react';
+import {capitalizeFirstLetter, convertNumberToPercent} from '../../util/util';
 
 const MAX_OFFER_PHOTOS_NUMBER = 6;
 
 interface Props {
   offer?: Offer;
-  /*// TODO: remove optional operator when offer page will be render by history api*/
+  /* // TODO: remove optional operator when offer page will be render by history api*/
 }
 
 const OfferScreen: FunctionComponent<Props> = (props: Props) => {

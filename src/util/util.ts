@@ -11,4 +11,6 @@ const convertNumberToPercent = (portion: number, total: number): number => {
   return portion / total * 100;
 };
 
-export {checkEmailValidity, capitalizeFirstLetter, convertNumberToPercent};
+const noop = () => {}; // eslint-disable-line @typescript-eslint/no-empty-function
+
+export {checkEmailValidity, capitalizeFirstLetter, convertNumberToPercent, noop};

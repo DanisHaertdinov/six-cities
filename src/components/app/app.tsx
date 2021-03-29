@@ -1,8 +1,9 @@
 import * as React from 'react';
+import {FunctionComponent} from 'react';
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
+import {ROUTES} from '../../const/const';
 import LoginPage from '../login-page/login-page.container';
 import OfferPage from '../offer-page/offer-page';
-import {FunctionComponent} from 'react';
 
 /* eslint-disable  */
 const MainPage = (props) => <div className="main-page"><h1>main page</h1>{props.children}</div>;
@@ -29,7 +30,7 @@ const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={ROUTES.MAIN}>
           <MainPage>
             <Header/>
             <CitiesMenu/>
@@ -37,11 +38,11 @@ const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
             <Map/>
           </MainPage>
         </Route>
-        <Route exact path="/login">
+        <Route exact path={ROUTES.LOGIN}>
           {
             isUserAuthorized
               ? <Redirect
-                to={`/`}
+                to={ROUTES.MAIN}
               />
               : <LoginPage>
                 <Header/>
@@ -50,7 +51,7 @@ const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
               </LoginPage>
           }
         </Route>
-        <Route exact path="/favorites">
+        <Route exact path={ROUTES.FAVORITES}>
           <FavoritesPage>
             <Header/>
             <Favorites>
@@ -62,14 +63,14 @@ const App: FunctionComponent<AppProps> = ({isUserAuthorized}: AppProps) => {
             <Footer/>
           </FavoritesPage>
         </Route>
-        <Route path="/offer">
+        <Route path={ROUTES.OFFER}>
           <OfferPage/>
           {/*  /!*<Header/>*!/*/}
           {/*  /!*<OfferData/>*!/*/}
           {/*  /!*<Map/>*!/*/}
           {/*  /!*<OffersList/>*!/*/}
           {/* </OfferPage>*/}
-          {/*// TODO: remove commented code when offer page will be render by history api*/}
+          {/* // TODO: remove commented code when offer page will be render by history api*/}
         </Route>
       </Switch>
     </BrowserRouter>

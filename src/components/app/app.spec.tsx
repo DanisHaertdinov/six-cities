@@ -1,11 +1,11 @@
-import * as React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import {renderWithRouter} from '../../util/test-helpers';
-import App from './app';
-import {screen} from '@testing-library/react';
 import {configureStore} from '@reduxjs/toolkit';
+import '@testing-library/jest-dom/extend-expect';
+import {screen} from '@testing-library/react';
+import * as React from 'react';
 import {Provider} from 'react-redux';
 import rootReducer from '../../store/reducer';
+import {renderWithRouter} from '../../util/test-helpers';
+import App from './app';
 
 describe(`app`, () => {
   it(`Should render login page if user unauthorized to "/login" path`, () => {
