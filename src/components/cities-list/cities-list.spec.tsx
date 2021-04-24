@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import CitiesList, {ACTIVE_CLASS_NAME} from './cities-list'
-import {noop} from "../../util/util";
+import {noop} from '../../util/util';
 
 const CITIES = [`Paris`, `Moscow`, `Cologne`, `Test`, `Laos`]
 
