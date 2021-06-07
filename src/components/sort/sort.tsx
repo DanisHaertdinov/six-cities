@@ -2,28 +2,28 @@ import * as React from 'react';
 import {FunctionComponent, useState} from 'react';
 
 interface Props {
-  sortTypes: string[],
-  activeSortType: string,
-  onClick: (sortType: string) => void
+  sortTypes: string[];
+  activeSortType: string;
+  onClick: (sortType: string) => void;
 }
 
 const ACTIVE_CLASS_NAME = `places__option--active`;
-const SORT_TEST_ID = `sorting-form`
+const SORT_TEST_ID = `sorting-form`;
 
 const Sort: FunctionComponent<Props> = ({sortTypes, activeSortType, onClick}: Props) => {
   const [isSortingListShown, setSortingListShown] = useState(false);
 
   const toggleSortingList = () => {
     setSortingListShown(!isSortingListShown);
-  }
+  };
 
   const handleSortingItemClick = (evt: React.MouseEvent, sortType: string) => {
-    evt.preventDefault()
+    evt.preventDefault();
 
     if (activeSortType !== sortType) {
-      onClick(sortType)
+      onClick(sortType);
     }
-  }
+  };
 
   return (
     <form data-testid={SORT_TEST_ID} onClick={toggleSortingList} className="places__sorting" action="#" method="get">
